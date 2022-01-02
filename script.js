@@ -79,19 +79,24 @@ $(document).ready(function() {
         let phone = $phone.val();
         let message = $message.val();
         // SAVE DATA TO FIREBASE
-        messageCollectionRef.add({
-            sendername: sendername,
-            email: email,
-            phone: phone,
-            message: message,
-            // timeStamp: data.now(),
+        if ((sendername | email | phone | message) == "") {
+            alert("填寫資料不正確");
+        } else {
+            messageCollectionRef.add({
+                sendername: sendername,
+                email: email,
+                phone: phone,
+                message: message,
+                // timeStamp: data.now(),
 
-        });
-        console.log("789");
-        $name.val("");
-        $email.val("");
-        $phone.val("");
-        $message.val("");
+            });
+            console.log("789");
+            $name.val("");
+            $email.val("");
+            $phone.val("");
+            $message.val("");
+            alert("送出成功");
+        }
     });
 
 });
